@@ -56,7 +56,7 @@
 		-->
 		<div data-role="page" id="pageone" data-theme="b" style="text-transform:none">
 			<div data-role="header">
-				<h1>You Are Here</h1>
+				<h1>You Are Here TEST</h1>
 			</div>
 
 			<div data-role="main" class="ui-content">
@@ -81,7 +81,7 @@
                     </div>
                     
                     <div class="ui-field-contain">
-                        <label for="select-floor">Building</label>
+                        <label for="select-floor">Floor</label>
                         <select name="select-floor" id="select-floor">
                             <option value="G">Ground</option>
                             <option value="1">Floor 1</option>
@@ -96,20 +96,29 @@
 						<input type="text" name="floorID" id="floorID" value=""  />
 					</div> -->
                     
-                    <div data-role="controlgroup" data-type="vertical">	
-						<div>
-							<a href="#pagetwo" data-role="button" class="ui-btn ui-btn-inline ui-mini" id="myprofile">My Profile</a>
-						</div>
+                    <div data-role="controlgroup" data-type="vertical">
 						
-                        <div>
-							<a href="#pagethree" data-role="button" id="letsgo">Let's Go!<a>	
-						</div>
+                        <div><a href="#pagetwo" data-role="button" id="letsgo">Let's Go!</a></div>
 						
 					</div>	
 				</div>
 			</div>
 		</div>
         
+        <!--Page Two
+		Let's Go screen
+		Map showing current location
+		-->
+		<div data-role="page" id="pagetwo" data-theme="b" style="text-transform:none">
+			<div data-role="header">
+				<h1>MashLever</h1>
+                <div data-role="main" class="ui-content">
+                    <div>
+                        <img src="img/building-a-map.svg">
+                    </div>
+                </div>
+			</div>
+        </div>
         
         
         <script type="text/javascript" src="cordova.js"></script>

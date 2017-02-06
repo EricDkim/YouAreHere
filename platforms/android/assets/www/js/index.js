@@ -46,6 +46,32 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+
+
 };
 
 app.initialize();
+
+// function openImage(src, width, height, alt) {
+//     var image = document.createElement("img");
+//     img.src = src;
+//     img.width = width;
+//     img.height = height;
+//     img.alt = alt;
+
+//     //add to the body tag
+//     document.body.appendChild(img);
+// };
+
+// $("#letsgo").on("click", function() {
+//     alert($("#select-building").val() + ", " + $("#select-floor").val() + "\nThis is the building and floor you select");
+//     //open image
+        
+
+// });
+
+
+
+
+
+
