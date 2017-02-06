@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        
+        <!--Reference and link to jquery libary-->
+		<link rel="stylesheet" href="lib/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="lib/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+		<script src="lib/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
+        <title>You Are Here</title>
+    </head>
+    <body>
+    <!--    <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">John Rose</p>
+            </div>
+        </div> -->
+        
+            <!-- Page One
+		Home Screen with two buttons
+		My Profile & Let's Go!
+		-->
+		<div data-role="page" id="pageone" data-theme="b" style="text-transform:none">
+			<div data-role="header">
+				<h1>You Are Here</h1>
+			</div>
+
+			<div data-role="main" class="ui-content">
+				<div align = "center">
+					<h2>You Are Here</h2>
+						<!--<img src="img/votelevers.jpg" alt="picture of voting lever" height="100%" width="100%"> -->
+				    
+                    <!--Input for the building -->
+                <!--    <div data-role="fieldcontain">
+						<label for="buildingId">Building:</label>
+						<input type="text" name="buildingID" id="buildingID" value=""  />
+					</div> -->
+                    
+                    <div class="ui-field-contain">
+                        <label for="select-building">Building</label>
+                        <select name="select-building" id="select-building">
+                            <option value="A">Building A</option>
+                            <option value="B">Building B</option>
+                            <option value="C">Building C</option>
+                        
+                        </select>
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="select-floor">Floor</label>
+                        <select name="select-floor" id="select-floor">
+                            <option value="G">Ground</option>
+                            <option value="1">Floor 1</option>
+                            <option value="2">Floor 2</option>
+                            <option value="3">Floor 3</option>
+                        </select>
+                    </div>
+                    
+                    <!--Input for the floor -->
+				<!--	<div data-role="fieldcontain">
+						<label for="floorID">Floor:</label>
+						<input type="text" name="floorID" id="floorID" value=""  />
+					</div> -->
+                    
+                    <div data-role="controlgroup" data-type="vertical">
+						
+                        <div>
+							<a href="#pagetwo" data-role="button" id="letsgo">Let's Go!<a>	
+						</div>
+						
+					</div>	
+				</div>
+			</div>
+		</div>
+        
+        <!--Page Two
+		Let's Go screen
+		Map showing current location
+		-->
+		<div data-role="page" id="pagethree" data-theme="b" style="text-transform:none">
+			<div data-role="header">
+				<h1>MashLever</h1>
+			</div>
+        
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
