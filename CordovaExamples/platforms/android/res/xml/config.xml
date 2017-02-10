@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.indooratlas.cordovaExamples" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SpinnerPlugin">
+        <param name="android-package" value="net.justin_credible.cordova.SpinnerPlugin" />
+    </feature>
+    <feature name="IndoorAtlas">
+        <param name="android-package" value="com.ialocation.plugin.IALocationPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>CordovaExamples</name>
+    <description>
+        Examples for IndoorAtlas Cordova Plugin
+    </description>
+    <author email="contact@indooratlas.com" href="http://indooratlas.com">
+        IndoorAtlas
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <icon density="mdpi" src="www/img/android/mdpi.png" />
+    <icon density="hdpi" src="www/img/android/hdpi.png" />
+    <icon density="xhdpi" src="www/img/android/xhdpi.png" />
+    <icon density="xxhdpi" src="www/img/android/xxhdpi.png" />
+    <icon density="xxxhdpi" src="www/img/android/xxxhdpi.png" />
+    <preference name="loglevel" value="DEBUG" />
+</widget>
