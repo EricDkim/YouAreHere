@@ -1,9 +1,9 @@
 # YouAreHere
 
 ## Contributors
-	* Eric D. Kim
-	* John Rose
-	* __Professor__ Cengiz Gunay
+	Eric D. Kim
+	John Rose
+	__Professor__ Cengiz Gunay
 
 ## About
 	-Needs to be added
