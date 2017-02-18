@@ -14,5 +14,22 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-spinner": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-spinner"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-indooratlas": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/IndoorAtlas/cordova-plugin.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

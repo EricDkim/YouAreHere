@@ -1,52 +1,59 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+* IndoorAtlas Cordova Plugin Examples
+* https://github.com/IndoorAtlas/cordova-plugin
+* https://github.com/IndoorAtlas/sdk-cordova-examples
+*/
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
 var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        cordovaExample.configureIA(); //added
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+  // Application Constructor
+  initialize: function() {
+    this.bindEvents();
+  },
+  // Bind Event Listeners
+  //
+  // Bind any events that are required on startup. Common events are:
+  // 'load', 'deviceready', 'offline', and 'online'.
+  bindEvents: function() {
+    document.addEventListener('deviceready', this.onDeviceReady, false);
+  },
+  // deviceready Event Handler
+  //
+  // The scope of 'this' is the event. In order to call the 'receivedEvent'
+  // function, we must explicitly call 'app.receivedEvent(...);'
+  onDeviceReady: function() {
+    app.receivedEvent('deviceready');
+    cordovaExample.configureIA();
+  },
+  // Update DOM on a Received Event
+  receivedEvent: function(id) {
+    var parentElement = document.getElementById(id);
+    var listeningElement = parentElement.querySelector('.listening');
+    var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+    listeningElement.setAttribute('style', 'display:none;');
+    receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
-    }
+    console.log('Received Event: ' + id);
+  }
 };
 
 app.initialize();
@@ -282,33 +289,9 @@ var cordovaExample = {
 
     // Calculate the length of a degree of latitude and longitude in meters
     var lengthOfDegreeOfLatitudeInMeters = m1 + (m2 * Math.cos(2 * lat)) + (m3 * Math.cos(4 * lat)) + (m4 * Math.cos(6 * lat));
-    var lengthOfDegreeOfLongitudeInMeters = (p1 * Math.cos(lat)) + (p2 * Math.cos(3 * lat)) +   (p3 * Math.cos(5 * lat));
+    var lengthOfDegreeOfLongitudeInMeters = (p1 * Math.cos(lat)) + (p2 * Math.cos(3 * lat)) + (p3 * Math.cos(5 * lat));
 
     var lengths = {degreeOfLatitudeInMeters: lengthOfDegreeOfLatitudeInMeters, degreeOfLongitudeInMeters: lengthOfDegreeOfLongitudeInMeters};
     return lengths
   }
 };
-
-// function openImage(src, width, height, alt) {
-//     var image = document.createElement("img");
-//     img.src = src;
-//     img.width = width;
-//     img.height = height;
-//     img.alt = alt;
-
-//     //add to the body tag
-//     document.body.appendChild(img);
-// };
-
-// $("#letsgo").on("click", function() {
-//     alert($("#select-building").val() + ", " + $("#select-floor").val() + "\nThis is the building and floor you select");
-//     //open image
-        
-
-// });
-
-
-
-
-
-

@@ -12,6 +12,12 @@
         },
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "edu.ggc.jrose"
+        },
+        "cordova-plugin-spinner": {
+            "PACKAGE_NAME": "edu.ggc.jrose"
+        },
+        "cordova-plugin-indooratlas": {
+            "PACKAGE_NAME": "edu.ggc.jrose"
         }
     },
     "dependent_plugins": {}
