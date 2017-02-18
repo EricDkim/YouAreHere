@@ -3,7 +3,7 @@
 ## Contributors
 - Eric D. Kim
 - John Rose
-- **Professor** Cengiz Gunay
+- **Professor** Cengiz Gunay (Advisor)
 
 ## About
 	-Needs to be added
