@@ -14,4 +14,11 @@ var IA_API_KEY = 'acb20002-c1c8-4da7-882a-4ec0fbffad82';
 var IA_API_SECRET = '/WR8nloUygtkltkPzRW3i/Lu5o6YR21BExwqYdq8GDlH2rLelYbe4NwxIWUNQcQLH6J/gCIP1H3B13HBsnw5ZZ+McSiZ9WQIcSUtyLfRrRAldbiFH0W6nv+pO+pvrw==';
 
 // Floorplan ID https://developer.indooratlas.com/venues
+// have a selector (if statement or switch statement) to get the value of the building then use that value
+// and use the appropriate floorplan_id for the app.
+
+// floorplan id for A
  var IA_FLOORPLAN_ID = 'c49491e5-6c4b-43a4-9c83-e4853435a95b';
+ 
+// floorplan id for H
+ // var IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9'
