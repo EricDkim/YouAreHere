@@ -57,6 +57,28 @@ var app = {
 };
 
 app.initialize();
+
+/* 
+    This function sets the floor selector to "Ground" and disables it if
+    "Building A" is selected in the building selector. If "Building A" is 
+    not selected then the floor selector will be enabled. 
+    
+*/
+$("#select-building").change(function() {
+  
+    // Create variable to grab current selection value
+    var building_selection = $(this).val();
+    
+    if (building_selection === "A") {
+        alert("You selected building A!");
+        $("#select-floor").val("G").trigger("change");
+        $("#select-floor").selectmenu("disable", true);
+        //$("select-floor").selectmenu("refresh", true);
+    } else {
+        $("#select-floor").selectmenu("enable", true);
+        //$("select-floor").selectmenu("refresh", true);
+    }
+});
 var image;
 var venuemap;
 var groundOverlay = null;
