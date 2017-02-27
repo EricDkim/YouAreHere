@@ -23,6 +23,26 @@
 * under the License.
 */
 
+/*
+ * IndoorAtlas Cordova Plugin Examples
+ * https://github.com/IndoorAtlas/cordova-plugin
+ * https://github.com/IndoorAtlas/sdk-cordova-examples
+ */
+
+// API KEYS FOR INDOORATLAS SERVICES AND GOOGLE MAPS JAVASCRIPT API
+
+// Get Google Maps API Key from here: https://console.developers.google.com/apis/credentials
+var GOOGLE_API_KEY = 'AIzaSyCLTAgyoDNgxcQtf9EUJ0NxX7SMrE9lYr0';
+// Get IndoorAtlas API Key and Secret from here https://app.indooratlas.com/apps
+var IA_API_KEY = 'acb20002-c1c8-4da7-882a-4ec0fbffad82';
+var IA_API_SECRET = '/WR8nloUygtkltkPzRW3i/Lu5o6YR21BExwqYdq8GDlH2rLelYbe4NwxIWUNQcQLH6J/gCIP1H3B13HBsnw5ZZ+McSiZ9WQIcSUtyLfRrRAldbiFH0W6nv+pO+pvrw==';
+var IA_FLOORPLAN_ID;
+
+// floorplan id for H
+// var IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9'
+
+
+
 var app = {
   // Application Constructor
   initialize: function() {
@@ -67,20 +87,29 @@ app.initialize();
 $("#select-building").change(function() {
   
     // Create variable to grab current selection value
-    var building_selection = $(this).val();
+    var building_selection = $("#select-building").val();
     
     if (building_selection === "A") {
+      // floorplan id for A
+      IA_FLOORPLAN_ID = 'c49491e5-6c4b-43a4-9c83-e4853435a95b';
         
         alert("You selected building A!");
         $("#select-floor").val("G").trigger("change");
         $("#select-floor").selectmenu("disable", true);
         //$("select-floor").selectmenu("refresh", true);
-    } else {
-        
-        $("#select-floor").selectmenu("enable", true);
+    } else if (building_selection ==="H"){
+      // floorplan id for H
+      IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9'
+        alert("You selected building H!");
+        // $("#select-floor").val("G").trigger("change");
+        // $("#select-floor").selectmenu("disable", true);
        
+    } else {
+        $("#select-floor").selectmenu("enable", true);
     }
 });
+
+
 
 var image;
 var venuemap;
