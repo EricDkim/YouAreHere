@@ -70,15 +70,18 @@ $("#select-building").change(function() {
     var building_selection = $(this).val();
     
     if (building_selection === "A") {
+        
         alert("You selected building A!");
         $("#select-floor").val("G").trigger("change");
         $("#select-floor").selectmenu("disable", true);
         //$("select-floor").selectmenu("refresh", true);
     } else {
+        
         $("#select-floor").selectmenu("enable", true);
-        //$("select-floor").selectmenu("refresh", true);
+       
     }
 });
+
 var image;
 var venuemap;
 var groundOverlay = null;
@@ -91,7 +94,9 @@ var cordovaExample = {
   // Configures IndoorAtlas SDK with API Key and Secret
   // Set the API Keys in www/js/APIKeys.js
   configureIA: function() {
-    var _config = {key: IA_API_KEY, secret: IA_API_SECRET};
+    var _config = {
+        key: IA_API_KEY, 
+        secret: IA_API_SECRET };
     IndoorAtlas.initialize(this.IAServiceConfigured, this.IAServiceFailed, _config);
     return false;
   },
