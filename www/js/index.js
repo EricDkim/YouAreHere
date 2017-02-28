@@ -33,9 +33,12 @@
 
 // Get Google Maps API Key from here: https://console.developers.google.com/apis/credentials
 var GOOGLE_API_KEY = 'AIzaSyCLTAgyoDNgxcQtf9EUJ0NxX7SMrE9lYr0';
+
 // Get IndoorAtlas API Key and Secret from here https://app.indooratlas.com/apps
 var IA_API_KEY = 'acb20002-c1c8-4da7-882a-4ec0fbffad82';
 var IA_API_SECRET = '/WR8nloUygtkltkPzRW3i/Lu5o6YR21BExwqYdq8GDlH2rLelYbe4NwxIWUNQcQLH6J/gCIP1H3B13HBsnw5ZZ+McSiZ9WQIcSUtyLfRrRAldbiFH0W6nv+pO+pvrw==';
+
+//
 var IA_FLOORPLAN_ID;
 
 // floorplan id for H
@@ -81,8 +84,7 @@ app.initialize();
 /* 
     This function sets the floor selector to "Ground" and disables it if
     "Building A" is selected in the building selector. If "Building A" is 
-    not selected then the floor selector will be enabled. 
-    
+    not selected then the floor selector will be enabled. The floor plan ID is also set based on what building is selected.
 */
 $("#select-building").change(function() {
   
@@ -90,21 +92,23 @@ $("#select-building").change(function() {
     var building_selection = $("#select-building").val();
     
     if (building_selection === "A") {
-      // floorplan id for A
-      IA_FLOORPLAN_ID = 'c49491e5-6c4b-43a4-9c83-e4853435a95b';
-        
+
+        // floorplan id for A
+        IA_FLOORPLAN_ID = 'c49491e5-6c4b-43a4-9c83-e4853435a95b';
         alert("You selected building A!");
         $("#select-floor").val("G").trigger("change");
         $("#select-floor").selectmenu("disable", true);
-        //$("select-floor").selectmenu("refresh", true);
-    } else if (building_selection ==="H"){
-      // floorplan id for H
-      IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9'
+       //$("select-floor").selectmenu("refresh", true);
+    
+    } else if (building_selection === "H"){
+        
         alert("You selected building H!");
-        // $("#select-floor").val("G").trigger("change");
-        // $("#select-floor").selectmenu("disable", true);
+        $("#select-floor").selectmenu("enable", true);
+        // floorplan id for H
+        IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9';
        
     } else {
+        
         $("#select-floor").selectmenu("enable", true);
     }
 });
@@ -124,8 +128,8 @@ var cordovaExample = {
   // Set the API Keys in www/js/APIKeys.js
   configureIA: function() {
     var _config = {
-        key: IA_API_KEY, 
-        secret: IA_API_SECRET };
+        key: IA_API_KEY,  
+        secret: IA_API_SECRET};
     IndoorAtlas.initialize(this.IAServiceConfigured, this.IAServiceFailed, _config);
     return false;
   },
