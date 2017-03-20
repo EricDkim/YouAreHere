@@ -41,6 +41,15 @@ under the License.
   <link rel="stylesheet" href="lib/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
   <script src="lib/jquery-2.1.4/jquery-2.1.4.min.js"></script>
   <script src="lib/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script type="text/javascript">
+    var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
+  </script>
+
+  <!-- added -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA"></script>
+  
+  <!-- API Keys for the app -->
+<!--   <script type="text/javascript" src="js/APIKeys.js"></script> -->
     
   <title>Test YouAreHere</title>
 </head>
@@ -49,7 +58,7 @@ under the License.
 
   <div data-role="page" id="pageone" data-theme="b" style="text-transform: none">
     <div data-role="header">
-      <h1>You Are Here T2</h1>
+      <h1>You Are Here Ver.1</h1>
     </div><!-- end of p1 header -->
     <div data-role="main" class="ui-content">
       <div align="center">
@@ -82,20 +91,23 @@ under the License.
   </div><!-- end of page one -->
 
   <div data-role="page" id="pagetwo" data-theme="b" style="text-transform: none">
+  
   <div id="googleMap" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+  <div id="map" style="opacity: 0.5!important;"></div>
+
     <div data-role="header">
       <h1>Page Two of You Are Here</h1>
       <div id="actions">
         <button id="setPositionButton">Set Position</button>
         <button id="startPositioningButton">Start</button>
         <button id="stopPositioningButton">Stop</button>
+        <input type="button" value="Toggle visibility" onclick="overlay.toggle();"></input>
+        <input type="button" value="Toggle DOM attachment" onclick="overlay.toggleDOM();"></input>
       </div>
       <div><a href="#pageone">Go back to page one</a></div>
     </div><!-- end of page two header -->
     <div data-role="main" class="ui-content">
-
-        <!-- API Keys for the app -->
-        <script type="text/javascript" src="js/APIKeys.js"></script>
+        
 
         <!-- Google Maps Javascript API, Api key is set in www/js/APIKeys.js -->
         <script src='https://maps.googleapis.com/maps/api/js?key=' id='googleMapsKey'></script>
@@ -103,12 +115,14 @@ under the License.
         var googleMapsKey = document.getElementById('googleMapsKey');
         googleMapsKey.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY;
         </script>
+        <!-- <div id="map-canvas"></div> -->
 
         <!-- Script to set up the API Keys for function calls -->
         <script>
         var setPositionButton = document.getElementById('setPositionButton');
         var startPositioningButton = document.getElementById('startPositioningButton');
         var stopPositioningButton = document.getElementById('stopPositioningButton');
+
         stopPositioningButton.disabled = true;
         stopPositioningButton.style.background = '#D3D3D3';
         setPositionButton.onclick = function() {
@@ -133,7 +147,6 @@ under the License.
           cordovaExample.stopPositioning();
         };
         </script>
-
     </div><!-- end of main for page two -->
   </div><!-- end of page two -->
 
