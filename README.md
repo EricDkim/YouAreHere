@@ -22,3 +22,7 @@
 	- Need to rotate the map canvas correctly so that it fits the screen in the best way possible (optimze space).
 	- First page selection screen should have its floor selector be disabled when initially selecting a building. When the user first opens the app, the floor selector should be disabled until a building is selected. 
 	- The back button needs to refresh the whole second page. As of now, the back button does not erase/cance/refresh when a new building is selected. 
+### Errors | March 21:
+	- on index.js line 227 where it says 'if (this.watchId != null) {', this is where the error
+		"IndoorAtlas Is Not Iniitialized" is coming from. However, after doing Set and Start position
+		once, the watchId will be not null the second time around which fixes this error. 
