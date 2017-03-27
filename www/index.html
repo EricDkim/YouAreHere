@@ -51,14 +51,14 @@ under the License.
   <!-- API Keys for the app -->
 <!--   <script type="text/javascript" src="js/APIKeys.js"></script> -->
     
-  <title>Test YouAreHere</title>
+  <title>YouAreHere</title>
 </head>
 
 <body>
 
   <div data-role="page" id="pageone" data-theme="b" style="text-transform: none">
     <div data-role="header">
-      <h1>You Are Here Ver.1</h1>
+      <h1>You Are Here</h1>
     </div><!-- end of p1 header -->
     <div data-role="main" class="ui-content">
       <div align="center">
@@ -83,6 +83,12 @@ under the License.
             <option name="floor 3" value="3">Floor 3</option>
           </select>
         </div><!-- end of floor selector -->
+          
+        <div class="ui-field-conatin">
+            <label for="search-room">Enter Room Number</label>
+            <input type="number" name="search-room" id="search-room" value=" " pattern="[0-9]{4}"/>
+        </div> <!-- End of room number input -->
+          
         <div data-role="controlgroup" data-type="vertical">
           <div><a href="#pagetwo" data-role="button" id="letsgo">Go to page two</a></div>
         </div><!-- end of control group -->
