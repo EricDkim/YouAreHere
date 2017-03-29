@@ -42,11 +42,11 @@ under the License.
   <script src="lib/jquery-2.1.4/jquery-2.1.4.min.js"></script>
   <script src="lib/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script type="text/javascript">
-    var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
+     var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
   </script>
 
   <!-- added -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA"></script> -->
   
   <!-- API Keys for the app -->
 <!--   <script type="text/javascript" src="js/APIKeys.js"></script> -->
@@ -55,6 +55,7 @@ under the License.
 </head>
 
 <body>
+
 
   <div data-role="page" id="pageone" data-theme="b" style="text-transform: none">
     <div data-role="header">
@@ -90,16 +91,20 @@ under the License.
     </div><!-- end of main for page one  -->
   </div><!-- end of page one -->
 
-  <div data-role="page" id="pagetwo" data-theme="b" style="text-transform: none">
+  <!-- overflow in style disables scroll in page two -->
+  <div data-role="page" id="pagetwo" data-theme="b" style="overflow-y: hidden; text-transform: none">
   
   <div id="googleMap" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
-  <div id="map" style="opacity: 0.5!important;"></div>
+  <div id="buildingMap">
+    <div id="markerTo" style="opacity: 0.7;"></div>
+    <div id="map"></div>
+  </div>
 
     <div data-role="header">
       <h1>Page Two of You Are Here</h1>
       <div id="actions">
-        <button id="setPositionButton">Set Position</button>
-        <button id="startPositioningButton">Start</button>
+        <button id="setPositionButton">Set/Start Position</button>
+        <!-- <button id="startPositioningButton">Start</button> -->
         <button id="stopPositioningButton">Stop</button>
         <input type="button" value="Toggle visibility" onclick="overlay.toggle();"></input>
         <input type="button" value="Toggle DOM attachment" onclick="overlay.toggleDOM();"></input>
@@ -127,16 +132,17 @@ under the License.
         stopPositioningButton.style.background = '#D3D3D3';
         setPositionButton.onclick = function() {
           cordovaExample.setPosition({regionId: IA_FLOORPLAN_ID});
-        };
-        startPositioningButton.onclick = function() {
-          startPositioningButton.disabled = true;
-          startPositioningButton.style.background = '#D3D3D3';
-          setPositionButton.disabled = true;
-          setPositionButton.style.background = '#D3D3D3';
-          stopPositioningButton.disabled = false;
-          stopPositioningButton.style.background = '#00A5F6';
           cordovaExample.startPositioning();
         };
+        // startPositioningButton.onclick = function() {
+        //   startPositioningButton.disabled = true;
+        //   startPositioningButton.style.background = '#D3D3D3';
+        //   setPositionButton.disabled = true;
+        //   setPositionButton.style.background = '#D3D3D3';
+        //   stopPositioningButton.disabled = false;
+        //   stopPositioningButton.style.background = '#00A5F6';
+        //   cordovaExample.startPositioning();
+        // };
         stopPositioningButton.onclick = function() {
           startPositioningButton.disabled = false;
           startPositioningButton.style.background = '#00A5F6';
