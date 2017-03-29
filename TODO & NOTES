@@ -1,0 +1,15 @@
+TODO & NOTES
+
+TODO:
+- Rotate the google maps pull of each building so it lines up with the screen
+- Fix the IndoorAtlas bugs
+	- HIGH
+- I need to create the bitmap? || section the rooms of the SVG image
+	- HIGH
+		- import a new image (SVG) of the building
+- When the user goes back and tries to go to a different map, the map should be cleared and should not pull up the previous mapping. 
+
+
+
+NOTES:
+- Found out that by just click 'Set Position' a few times it will load up the map from the indoorAtlas server
