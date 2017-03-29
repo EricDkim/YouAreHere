@@ -139,7 +139,19 @@ h1 {
         line-height: 30px;
         padding-left: 10px;
       }*/
-
+#googleMap {
+    -webkit-transform: rotate(32.5deg);
+}
+#img {
+    -webkit-transform: rotate(50deg);
+}
+.img {
+    -webkit-transform: rotate(50deg);
+}
+.gm-style-cc { display:none; }
+#buildingMap {
+    -webkit-transform: rotate(50deg);
+}
 
 
 

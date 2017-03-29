@@ -100,14 +100,14 @@ $("#select-building").change(function() {
 
         // floorplan id for A
         IA_FLOORPLAN_ID = 'c49491e5-6c4b-43a4-9c83-e4853435a95b';
-        alert("You selected building A!");
+        // alert("You selected building A!");
         $("#select-floor").val("G").trigger("change");
         $("#select-floor").selectmenu("disable", true);
        //$("select-floor").selectmenu("refresh", true);
     
     } else if (building_selection === "H"){
         
-        alert("You selected building H!");
+        // alert("You selected building H!");
         $("#select-floor").selectmenu("enable", true);
         // floorplan id for H
         IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9';
@@ -173,7 +173,7 @@ var cordovaExample = {
         });
       }
       // disabled moving of screen while marker moves
-      venuemap.panTo(center);
+      // venuemap.panTo(center);
     }
     catch(error) {alert(error)};
   },
@@ -188,7 +188,7 @@ var cordovaExample = {
       IndoorAtlas.clearWatch(this.watchId);
       this.watchId = IndoorAtlas.watchPosition(this.showLocation,this.IAServiceFailed);
 
-      alert("Setting location with floorplan ID: " + IA_FLOORPLAN_ID);
+      // alert("Setting location with floorplan ID: " + IA_FLOORPLAN_ID);
 
       try {
         // SpinnerPlugin.activityStart('Setting Location dkim3');
@@ -200,10 +200,10 @@ var cordovaExample = {
         };
         var fail = function(error){
           if (this.watchId == null){
-            alert("watchID is null");
+            // alert("watchID is null");
           }
           SpinnerPlugin.activityStop();
-          alert("caught failed");
+          // alert("caught failed");
           alert(error.message);
           cordovaExample.setMapOverlay(floorplan);
           // while(alert(error.message) === "IndoorsAtlas is not initialzed"){
@@ -371,17 +371,17 @@ var cordovaExample = {
   // Sets an overlay to Google Maps specified by the floorplan coordinates and bearing
   mapOverlay: function(position) {
     try {
-      alert("setting overlay 1"); //added
+      // alert("setting overlay 1"); //added
       SpinnerPlugin.activityStart('Setting overlay');
       var win = function(floorplan) {
-        alert("set overlay worked Win condition 2"); //added
+        // alert("set overlay worked Win condition 2"); //added
         SpinnerPlugin.activityStop();
         // Set position and map overlay
         cordovaExample.setMapOverlay(floorplan);
 
       };
       var fail = function(error) {
-        alert("setoverlay failed 3"); //added
+        // alert("setoverlay failed 3"); //added
         SpinnerPlugin.activityStop();
         alert(error.message);
       };
@@ -429,7 +429,7 @@ var cordovaExample = {
 
     // Remove previous overlay if it exists
     if (groundOverlay != null) {
-      alert("calling the remove overlay if it exists call 4"); //added
+      // alert("calling the remove overlay if it exists call 4"); //added
       groundOverlay.setMap(null);
     }
 
@@ -445,7 +445,7 @@ var cordovaExample = {
 
   // Updates the ground overlay
   updateOverlay: function(id) {
-    alert("updaing the ground overlay 5"); //added
+    // alert("updaing the ground overlay 5"); //added
     var win = function(floorplan) {
       SpinnerPlugin.activityStop();
       cordovaExample.setMapOverlay(floorplan);
@@ -533,13 +533,15 @@ HBuildingOverlay.prototype.draw = function() {
 
   // resize the img's div to fit the indicated dimesions 
   var div = this.div_;
-  div.style.left = '150' - sw.x + 'px';
-  //increase will make it go down
+  // div.style.left = '110' - sw.x + 'px';
+  // //increase will make it go down
   // div.style.top = '130' - ne.y + 'px';
-  div.style.top = '150' - ne.y + 'px';
+  // div.style.top = '135' - ne.y + 'px';
   // div.style.width = (sw.y - ne.x) + 'px';
-  div.style.width = (ne.x + sw.x - 10) + 'px';
-  div.style.height = (sw.y + ne.y - 15) + 'px';
+  // div.style.width = (ne.x + sw.x - 10) + 'px';
+  // div.style.height = (sw.y + ne.y - 15) + 'px';
+  div.style.width = (ne.x + sw.x) + 'px';
+  div.style.height = (sw.y + ne.y + 25) + 'px';  
 };
 
 HBuildingOverlay.prototype.onRemove = function() {
@@ -580,35 +582,6 @@ HBuildingOverlay.prototype.toggleDOM = function() {
     this.setMap(this.map_);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
