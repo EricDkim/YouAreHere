@@ -7,7 +7,7 @@
 // API KEYS FOR INDOORATLAS SERVICES AND GOOGLE MAPS JAVASCRIPT API
 
 // Get Google Maps API Key from here: https://console.developers.google.com/apis/credentials
-var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
+// var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
 
 // Get IndoorAtlas API Key and Secret from here https://app.indooratlas.com/apps
 var IA_API_KEY = 'acb20002-c1c8-4da7-882a-4ec0fbffad82';

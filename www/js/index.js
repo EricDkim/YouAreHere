@@ -32,7 +32,7 @@
 // API KEYS FOR INDOORATLAS SERVICES AND GOOGLE MAPS JAVASCRIPT API
 
 // Get Google Maps API Key from here: https://console.developers.google.com/apis/credentials
-var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
+// var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
 
 // Get IndoorAtlas API Key and Secret from here https://app.indooratlas.com/apps
 var IA_API_KEY = 'acb20002-c1c8-4da7-882a-4ec0fbffad82';
@@ -122,6 +122,7 @@ $("#select-building").change(function() {
 
 var image;
 var venuemap;
+var venueMarker; // added
 var groundOverlay = null;
 var cordovaExample = {
   watchId : null,
@@ -147,15 +148,22 @@ var cordovaExample = {
   },
 
   // Displays the current location of the user
+  // IMPORTANT FOR USER TRACKING AND WHY MAP MOVES WHEN USER MOVES
   showLocation: function(position) {
     // Show a map centered at (position.coords.latitude, position.coords.longitude).
     SpinnerPlugin.activityStop();
     try {
       var center = {lat: position.coords.latitude, lng: position.coords.longitude};
+
       if (this.marker != null) {
+        // condition to have the marker update the users position
         this.marker.setPosition(center);
+        // do not add an alert here. 
       }
       else {
+        alert('good mark');
+        // this is the default location where the marker will be placed if the service cannot
+        // pick up the users location.
         this.marker = new google.maps.Marker({
           position: center,
           map: venuemap,
@@ -164,6 +172,7 @@ var cordovaExample = {
           optimized: false
         });
       }
+      // disabled moving of screen while marker moves
       venuemap.panTo(center);
     }
     catch(error) {alert(error)};
@@ -171,34 +180,73 @@ var cordovaExample = {
 
   // Sets position of the location
   setPosition: function(options) {
-    // Check if the floorplan is set
+    SpinnerPlugin.activityStart('Eric Set Location');
+    var i = 0;
+
+      // Check if the floorplan is set
     if (IA_FLOORPLAN_ID != "") {
+      IndoorAtlas.clearWatch(this.watchId);
+      this.watchId = IndoorAtlas.watchPosition(this.showLocation,this.IAServiceFailed);
 
       alert("Setting location with floorplan ID: " + IA_FLOORPLAN_ID);
 
       try {
-        SpinnerPlugin.activityStart('Setting location');
+        // SpinnerPlugin.activityStart('Setting Location dkim3');
         var win = function() {
+
           SpinnerPlugin.activityStop();
           cordovaExample.startRegionWatch();
+          cordovaExample.setMapOverlay(floorplan);
         };
-        var fail = function(error) {
+        var fail = function(error){
+          if (this.watchId == null){
+            alert("watchID is null");
+          }
           SpinnerPlugin.activityStop();
+          alert("caught failed");
           alert(error.message);
+          cordovaExample.setMapOverlay(floorplan);
+          // while(alert(error.message) === "IndoorsAtlas is not initialzed"){
+          //   i++;
+          //   alert(i);
+          //   cordovaExample.startRegionWatch();
+          // }
         };
         IndoorAtlas.setPosition(win, fail, options);
       }
-      catch(error) {
+      catch(error){
         alert(error);
       }
+
+      // try {
+      //   SpinnerPlugin.activityStart('Setting location');
+      //   var win = function() {
+      //     SpinnerPlugin.activityStop();
+      //     cordovaExample.startRegionWatch();
+      //   };
+      //   var fail = function(error) {
+      //     alert("caught fail");
+      //     SpinnerPlugin.activityStop();
+      //     alert(error.message);
+      //   };
+      //   IndoorAtlas.setPosition(win, fail, options);
+      // }
+      // catch(error) {
+      //   alert("caught error");
+      //   alert(error);
+      // }
     } else {
       alert("Floorplan ID is not set");
     }
+    
+
+
   },
   // Starts positioning the user in the given floorplan area
   startPositioning: function() {
-    SpinnerPlugin.activityStart('Move around to get a location');
+    // SpinnerPlugin.activityStart('Move around to get a location');
 
+    // this is where we are getting the 'indooratlas is not init' error. The watchId != null area
     if (this.watchId != null) {
       IndoorAtlas.clearWatch(this.watchId);
     }
@@ -259,21 +307,30 @@ var cordovaExample = {
         } else if (buildingLatLng === "H") {
           var mapProp = new google.maps.Map(document.getElementById('map'),{
           // var mapProp = {
-            center: new google.maps.LatLng(33.980151, -84.003725),
-            zoom: 20,
+            draggable: false,
+            scrollWheel: false,
+            center: new google.maps.LatLng(33.980347, -84.003798),
+            zoom: 19,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
-            streetViewControl: false
+            streetViewControl: false,
+            scaleControl: false,
+            zoomControl: false,
+            disableDoubleClickZoom: true
+          });
+          // mapProp for marker
+          var markerProp = new google.maps.Map(document.getElementById('markerTo'), {
+            center: new google.maps.LatLng(33.980347, -84.003798),
+            zoom: 19,
           });
           //added
+          // this will be the coord of where the H building overlay will be located
           var bounds = new google.maps.LatLngBounds(
-              new google.maps.LatLng(33.979742, -84.003901),
-              new google.maps.LatLng(33.980712, -84.003568));
-          // this srcImage path WORKS!!!
-          // var srcImage = "img/logo.png";
-          // old image
-          // var srcImage = "img/buildingH1.svg";
-          var srcImage = "img/hbuildingf1.png";
+               new google.maps.LatLng(33.979742, -84.003901),
+              // new google.maps.LatLng(33.978785, -84.004477),
+               new google.maps.LatLng(33.980712, -84.003568));
+              // new google.maps.LatLng(33.979586, -84.003887));
+          var srcImage = "img/buildingHfloor1_1.svg";
 
           overlay = new HBuildingOverlay(bounds, srcImage, mapProp);
         } else {
@@ -283,7 +340,10 @@ var cordovaExample = {
             zoom: 20,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
-            streetViewControl: false
+            streetViewControl: false,
+            scaleControl: false,
+            scrollWheel: false,
+            zoomControl: false
           };
         }
       
@@ -303,26 +363,29 @@ var cordovaExample = {
     //   streetViewControl: false
     // };
     venuemap = new google.maps.Map(document.getElementById('googleMap'), mapProp);
+    // added
+    vanuemarker = new google.maps.Map(document.getElementById('markerTo'), markerProp);
     cordovaExample.mapOverlay({regionId: IA_FLOORPLAN_ID});
   },
 
   // Sets an overlay to Google Maps specified by the floorplan coordinates and bearing
   mapOverlay: function(position) {
     try {
-      alert("setting overlay"); //added
+      alert("setting overlay 1"); //added
       SpinnerPlugin.activityStart('Setting overlay');
       var win = function(floorplan) {
-        alert("set overlay worked Win condition"); //added
+        alert("set overlay worked Win condition 2"); //added
         SpinnerPlugin.activityStop();
         // Set position and map overlay
         cordovaExample.setMapOverlay(floorplan);
 
       };
       var fail = function(error) {
-        alert("setoverlay failed"); //added
+        alert("setoverlay failed 3"); //added
         SpinnerPlugin.activityStop();
         alert(error.message);
       };
+
 
       // Gets the floorplan with the given region ID (floorplan ID) and then continues as specified earlier
       IndoorAtlas.fetchFloorPlanWithId(position.regionId, win, fail);
@@ -366,7 +429,7 @@ var cordovaExample = {
 
     // Remove previous overlay if it exists
     if (groundOverlay != null) {
-      alert("calling the remove overlay if it exists call"); //added
+      alert("calling the remove overlay if it exists call 4"); //added
       groundOverlay.setMap(null);
     }
 
@@ -375,14 +438,14 @@ var cordovaExample = {
     groundOverlay = new GroundOverlayEX(floorplan.url, bounds, options);
 
     // Displays the overlay in the map
-    groundOverlay.setMap(venuemap);
-    //changed the zoom to be more out was 20
-    venuemap.setZoom(16);
+    // groundOverlay.setMap(venuemap);
+    // changed the zoom to be more out was 20
+    // venuemap.setZoom(16);
   },
 
   // Updates the ground overlay
   updateOverlay: function(id) {
-    alert("updaing the ground overlay"); //added
+    alert("updaing the ground overlay 5"); //added
     var win = function(floorplan) {
       SpinnerPlugin.activityStop();
       cordovaExample.setMapOverlay(floorplan);
@@ -444,9 +507,12 @@ HBuildingOverlay.prototype.onAdd = function() {
   //create the image element and now attach it to the div element to show in the app
   var img = document.createElement('img');
   img.src = this.image_;
-  img.style.width = '75%';
-  img.style.height = '75%';
-  img.style.opacity = '0.5';
+  img.style.width = '100%';
+  img.style.height = '100%';
+  img.style.opacity = '0.8';
+  // increasing the degree will make it turn right
+  img.style.transform = 'rotate(-31deg)';
+  // img.style.transform = 'rotate(-32deg)';
   div.appendChild(img);
 
   this.div_ = div;
@@ -455,36 +521,6 @@ HBuildingOverlay.prototype.onAdd = function() {
   panes.overlayImage.appendChild(this.div_);
 };
 HBuildingOverlay.prototype.draw = function() {
-// HBuildingOverlay.prototype.draw = function(floorplan) {
-
-  // var center = floorplan.center;
-  // var pixelsToMeters = floorplan.pixelsToMeters;
-  // var heightForCoordinates = floorplan.bitmapHeight/2;
-  // var widthForCoordinates = floorplan.bitmapWidth/2;
-
-  // // Amount of meters of how much the coordinates have to be moved from the centre.
-  // var metersHorizontal = widthForCoordinates * pixelsToMeters;
-  // var metersVertical = heightForCoordinates * pixelsToMeters;
-
-  // // This function returns the length of one degree of latitude and same for longitude for the given latitude
-  // var lengths = cordovaExample.calculateLongLatDegreesInMeters(center[1]);
-
-  // // Amounts of how much the coordinates need to be moved from the centre
-  // var longitudes = metersHorizontal / lengths.degreeOfLongitudeInMeters;
-  // var latitudes = metersVertical / lengths.degreeOfLatitudeInMeters;
-
-  // // Calculate the new south-west and north-east coordinates
-  // var swCoords = new google.maps.LatLng({lat: center[1] - latitudes, lng: center[0] - longitudes});
-  // var neCoords = new google.maps.LatLng({lat: center[1] + latitudes, lng: center[0] + longitudes});
-
-  // // Get the bound of the unrotated image
-  // var bounds = new google.maps.LatLngBounds(swCoords , neCoords);
-
-
-
-
-
-
 
   // use the SW and NW coordinates to peg the image into place 
   // to do this frist we need to get the projection from the overlay
@@ -497,10 +533,13 @@ HBuildingOverlay.prototype.draw = function() {
 
   // resize the img's div to fit the indicated dimesions 
   var div = this.div_;
-  div.style.left = sw.x + 'px';
-  div.style.top = ne.y + 'px';
-  div.style.width = (ne.x - sw.y) + 'px';
-  div.style.height = (sw.y - ne.y) + 'px';
+  div.style.left = '150' - sw.x + 'px';
+  //increase will make it go down
+  // div.style.top = '130' - ne.y + 'px';
+  div.style.top = '150' - ne.y + 'px';
+  // div.style.width = (sw.y - ne.x) + 'px';
+  div.style.width = (ne.x + sw.x - 10) + 'px';
+  div.style.height = (sw.y + ne.y - 15) + 'px';
 };
 
 HBuildingOverlay.prototype.onRemove = function() {
