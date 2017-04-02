@@ -140,7 +140,9 @@ h1 {
         padding-left: 10px;
       }*/
 #googleMap {
-    -webkit-transform: rotate(32.5deg);
+    -webkit-transform: rotate(31deg);
+    /* original */
+    /*-webkit-transform: rotate(32deg);*/
 }
 #img {
     -webkit-transform: rotate(50deg);
