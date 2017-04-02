@@ -309,14 +309,77 @@ var cordovaExample = {
           // var mapProp = {
             draggable: false,
             scrollWheel: false,
-            center: new google.maps.LatLng(33.980347, -84.003798),
+            // oiginal
+            // center: new google.maps.LatLng(33.980347, -84.003798),
+            // center: new google.maps.LatLng(33.980325, -84.003844),
+            center: new google.maps.LatLng(33.980329, -84.003831),
             zoom: 19,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
             streetViewControl: false,
             scaleControl: false,
             zoomControl: false,
-            disableDoubleClickZoom: true
+            disableDoubleClickZoom: true,
+            styles: [
+              {
+                "elementType": "labels",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "administrative",
+                "elementType": "geometry",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "administrative.neighborhood",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "poi",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "road",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "road",
+                "elementType": "labels.icon",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              },
+              {
+                "featureType": "transit",
+                "stylers": [
+                  {
+                    "visibility": "off"
+                  }
+                ]
+              }
+            ]
           });
           // mapProp for marker
           var markerProp = new google.maps.Map(document.getElementById('markerTo'), {
@@ -330,7 +393,7 @@ var cordovaExample = {
               // new google.maps.LatLng(33.978785, -84.004477),
                new google.maps.LatLng(33.980712, -84.003568));
               // new google.maps.LatLng(33.979586, -84.003887));
-          var srcImage = "img/buildingHfloor1_1.svg";
+          var srcImage = "img/buildingHfloor1_1_rotate.svg";
 
           overlay = new HBuildingOverlay(bounds, srcImage, mapProp);
         } else {
@@ -507,11 +570,11 @@ HBuildingOverlay.prototype.onAdd = function() {
   //create the image element and now attach it to the div element to show in the app
   var img = document.createElement('img');
   img.src = this.image_;
-  img.style.width = '100%';
-  img.style.height = '100%';
+  img.style.width = '90%';
+  img.style.height = '90%';
   img.style.opacity = '0.8';
   // increasing the degree will make it turn right
-  img.style.transform = 'rotate(-31deg)';
+  img.style.transform = 'rotate(-30deg)';
   // img.style.transform = 'rotate(-32deg)';
   div.appendChild(img);
 
@@ -533,15 +596,15 @@ HBuildingOverlay.prototype.draw = function() {
 
   // resize the img's div to fit the indicated dimesions 
   var div = this.div_;
-  // div.style.left = '110' - sw.x + 'px';
-  // //increase will make it go down
-  // div.style.top = '130' - ne.y + 'px';
+   div.style.left = sw.x + 'px';
+   //increase will make it go down
+   div.style.top = ne.y + 'px';
   // div.style.top = '135' - ne.y + 'px';
   // div.style.width = (sw.y - ne.x) + 'px';
   // div.style.width = (ne.x + sw.x - 10) + 'px';
   // div.style.height = (sw.y + ne.y - 15) + 'px';
   div.style.width = (ne.x + sw.x) + 'px';
-  div.style.height = (sw.y + ne.y + 25) + 'px';  
+  div.style.height = (sw.y + ne.y) + 'px';
 };
 
 HBuildingOverlay.prototype.onRemove = function() {
@@ -582,6 +645,8 @@ HBuildingOverlay.prototype.toggleDOM = function() {
     this.setMap(this.map_);
   }
 };
+
+// new function to handle the start button
 
 
 
