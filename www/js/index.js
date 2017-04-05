@@ -32,7 +32,7 @@
 // API KEYS FOR INDOORATLAS SERVICES AND GOOGLE MAPS JAVASCRIPT API
 
 // Get Google Maps API Key from here: https://console.developers.google.com/apis/credentials
-// var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
+var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
 
 // Get IndoorAtlas API Key and Secret from here https://app.indooratlas.com/apps
 var IA_API_KEY = 'acb20002-c1c8-4da7-882a-4ec0fbffad82';
@@ -82,8 +82,7 @@ var app = {
 app.initialize();
 
 //added
-var overlay 
-HBuildingOverlay.prototype = new google.maps.OverlayView();
+// HBuildingOverlay.prototype = new google.maps.OverlayView();
 //jump to google maps descriptions
 
 /* 
@@ -122,7 +121,7 @@ $("#select-building").change(function() {
 
 var image;
 var venuemap;
-var venueMarker; // added
+// var venueMarker; // added
 var groundOverlay = null;
 var cordovaExample = {
   watchId : null,
@@ -168,6 +167,8 @@ var cordovaExample = {
           position: center,
           map: venuemap,
           icon: image,
+          zoom: 2,
+          animation: google.maps.Animation.DROP,
           zIndex: google.maps.Marker.MAX_ZINDEX + 1,
           optimized: false
         });
@@ -180,61 +181,32 @@ var cordovaExample = {
 
   // Sets position of the location
   setPosition: function(options) {
-    SpinnerPlugin.activityStart('Eric Set Location');
-    var i = 0;
 
       // Check if the floorplan is set
     if (IA_FLOORPLAN_ID != "") {
-      IndoorAtlas.clearWatch(this.watchId);
-      this.watchId = IndoorAtlas.watchPosition(this.showLocation,this.IAServiceFailed);
+      alert("Setting location with floorplan ID: " + IA_FLOORPLAN_ID);
+      // IndoorAtlas.clearWatch(this.watchId);
+      // this.watchId = IndoorAtlas.watchPosition(this.showLocation,this.IAServiceFailed);
 
       // alert("Setting location with floorplan ID: " + IA_FLOORPLAN_ID);
 
       try {
-        // SpinnerPlugin.activityStart('Setting Location dkim3');
+        SpinnerPlugin.activityStart('Setting location');
         var win = function() {
 
           SpinnerPlugin.activityStop();
           cordovaExample.startRegionWatch();
-          cordovaExample.setMapOverlay(floorplan);
         };
         var fail = function(error){
-          if (this.watchId == null){
-            // alert("watchID is null");
-          }
           SpinnerPlugin.activityStop();
-          // alert("caught failed");
           alert(error.message);
-          cordovaExample.setMapOverlay(floorplan);
-          // while(alert(error.message) === "IndoorsAtlas is not initialzed"){
-          //   i++;
-          //   alert(i);
-          //   cordovaExample.startRegionWatch();
-          // }
+
         };
         IndoorAtlas.setPosition(win, fail, options);
       }
       catch(error){
         alert(error);
       }
-
-      // try {
-      //   SpinnerPlugin.activityStart('Setting location');
-      //   var win = function() {
-      //     SpinnerPlugin.activityStop();
-      //     cordovaExample.startRegionWatch();
-      //   };
-      //   var fail = function(error) {
-      //     alert("caught fail");
-      //     SpinnerPlugin.activityStop();
-      //     alert(error.message);
-      //   };
-      //   IndoorAtlas.setPosition(win, fail, options);
-      // }
-      // catch(error) {
-      //   alert("caught error");
-      //   alert(error);
-      // }
     } else {
       alert("Floorplan ID is not set");
     }
@@ -381,21 +353,12 @@ var cordovaExample = {
               }
             ]
           });
-          // mapProp for marker
-          var markerProp = new google.maps.Map(document.getElementById('markerTo'), {
-            center: new google.maps.LatLng(33.980347, -84.003798),
-            zoom: 19,
-          });
-          //added
-          // this will be the coord of where the H building overlay will be located
-          var bounds = new google.maps.LatLngBounds(
-               new google.maps.LatLng(33.979742, -84.003901),
-              // new google.maps.LatLng(33.978785, -84.004477),
-               new google.maps.LatLng(33.980712, -84.003568));
-              // new google.maps.LatLng(33.979586, -84.003887));
-          var srcImage = "img/buildingHfloor1_1_rotate.svg";
 
-          overlay = new HBuildingOverlay(bounds, srcImage, mapProp);
+          var swBound = new google.maps.LatLng(33.979579, -84.004074);
+          var neBound = new google.maps.LatLng(33.980980, -84.003446);
+          var bounds = new google.maps.LatLngBounds(swBound, neBound);
+          
+
         } else {
           alert("Defualt location");
           var mapProp = {
@@ -409,12 +372,12 @@ var cordovaExample = {
             zoomControl: false
           };
         }
-      
+    // the blue dot 
     image ={
       path: google.maps.SymbolPath.CIRCLE,
       fillColor: '#00A5F6',
       fillOpacity: 1.0,
-      scale: 6.0,
+      scale: 4.0,
       strokeColor: '#00A5F6',
       strokeWeight: 1
     };
@@ -427,7 +390,7 @@ var cordovaExample = {
     // };
     venuemap = new google.maps.Map(document.getElementById('googleMap'), mapProp);
     // added
-    vanuemarker = new google.maps.Map(document.getElementById('markerTo'), markerProp);
+    // venuemarker = new google.maps.Map(document.getElementById('markerTo'), markerProp);
     cordovaExample.mapOverlay({regionId: IA_FLOORPLAN_ID});
   },
 
@@ -439,6 +402,15 @@ var cordovaExample = {
       var win = function(floorplan) {
         // alert("set overlay worked Win condition 2"); //added
         SpinnerPlugin.activityStop();
+          var block = document.getElementById('centered');
+          var hbuildingfloor1div = document.getElementById('hBuildingFloor1');
+          if (hbuildingfloor1div.style.display === 'none'){
+            hbuildingfloor1div.style.display = 'block';
+            block.style.display = 'block';
+          } else {
+            hbuildingfloor1div.style.display = 'none';
+            block.style.display = 'none';
+          }
         // Set position and map overlay
         cordovaExample.setMapOverlay(floorplan);
 
@@ -504,6 +476,7 @@ var cordovaExample = {
     // groundOverlay.setMap(venuemap);
     // changed the zoom to be more out was 20
     // venuemap.setZoom(16);
+
   },
 
   // Updates the ground overlay
@@ -511,7 +484,18 @@ var cordovaExample = {
     // alert("updaing the ground overlay 5"); //added
     var win = function(floorplan) {
       SpinnerPlugin.activityStop();
+      //added
+      var block = document.getElementById('centered');
+          var hbuildingfloor1div = document.getElementById('hBuildingFloor1');
+          if (hbuildingfloor1div.style.display === 'none'){
+            hbuildingfloor1div.style.display = 'block';
+            block.style.display = 'block';
+          } else {
+            hbuildingfloor1div.style.display = 'none';
+            block.style.display = 'none';
+          }
       cordovaExample.setMapOverlay(floorplan);
+
     };
     var fail = function(error) {
       SpinnerPlugin.activityStop();
@@ -546,105 +530,77 @@ var cordovaExample = {
 
 // constructor for hbuildingoverlay
 // might have to chage 'map' to 'mapProp'
-function HBuildingOverlay(bounds, image, mapProp){
+// function HBuildingOverlay(bounds, image, mapProp){
 
-  //init all properties
-  this.bounds_ = bounds;
-  this.image_ = image;
-  this.map_ = mapProp;
+//   //init all properties
+//   this.bounds_ = bounds;
+//   this.image_ = image;
+//   this.map_ = mapProp;
 
-  //property to hold the image's div
-  this.div_ = null;
+//   //property to hold the image's div
+//   this.div_ = null;
 
-  this.setMap(mapProp);
+//   this.setMap(mapProp);
 
-}
+// }
 
-// when the map's panes are ready this is called
-HBuildingOverlay.prototype.onAdd = function() {
-  var div = document.createElement('div');
-  div.style.border = 'none';
-  div.style.borderWidth = '0px';
-  div.style.position = 'absolute';
 
-  //create the image element and now attach it to the div element to show in the app
-  var img = document.createElement('img');
-  img.src = this.image_;
-  img.style.width = '90%';
-  img.style.height = '90%';
-  img.style.opacity = '0.8';
-  // increasing the degree will make it turn right
-  img.style.transform = 'rotate(-30deg)';
-  // img.style.transform = 'rotate(-32deg)';
-  div.appendChild(img);
+//   this.div_ = div;
 
-  this.div_ = div;
+//   var panes = this.getPanes();
+//   panes.overlayImage.appendChild(this.div_);
+// };
+// HBuildingOverlay.prototype.draw = function() {
 
-  var panes = this.getPanes();
-  panes.overlayImage.appendChild(this.div_);
-};
-HBuildingOverlay.prototype.draw = function() {
+//   // use the SW and NW coordinates to peg the image into place 
+//   // to do this frist we need to get the projection from the overlay
+//   var overlayProjection = this.getProjection();
 
-  // use the SW and NW coordinates to peg the image into place 
-  // to do this frist we need to get the projection from the overlay
-  var overlayProjection = this.getProjection();
+//   // Retrieve the SW and NW coordinates in LatLng and convert them to pixel coord
+//   // this will be later used to resize the div
+//   var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+//   var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
 
-  // Retrieve the SW and NW coordinates in LatLng and convert them to pixel coord
-  // this will be later used to resize the div
-  var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
-  var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
 
-  // resize the img's div to fit the indicated dimesions 
-  var div = this.div_;
-   div.style.left = sw.x + 'px';
-   //increase will make it go down
-   div.style.top = ne.y + 'px';
-  // div.style.top = '135' - ne.y + 'px';
-  // div.style.width = (sw.y - ne.x) + 'px';
-  // div.style.width = (ne.x + sw.x - 10) + 'px';
-  // div.style.height = (sw.y + ne.y - 15) + 'px';
-  div.style.width = (ne.x + sw.x) + 'px';
-  div.style.height = (sw.y + ne.y) + 'px';
-};
 
-HBuildingOverlay.prototype.onRemove = function() {
-  this.div_.parentNode.removeChild(this.div_);
-}
+// HBuildingOverlay.prototype.onRemove = function() {
+//   this.div_.parentNode.removeChild(this.div_);
+// }
 
-HBuildingOverlay.prototype.hide = function() {
-  if (this.div_){
-    // the visibility property must be a string enclosed in quotes
-    this.div_.style.visibility = 'hidden';
-  }
-};
+// HBuildingOverlay.prototype.hide = function() {
+//   if (this.div_){
+//     // the visibility property must be a string enclosed in quotes
+//     this.div_.style.visibility = 'hidden';
+//   }
+// };
 
-HBuildingOverlay.prototype.show = function() {
-  if (this.div_){
-    // same as the hide function, the visiblity property must be a string enclosed in quotes
-    this.div_.style.visibility = 'visible';
-  }
-}; 
+// HBuildingOverlay.prototype.show = function() {
+//   if (this.div_){
+//     // same as the hide function, the visiblity property must be a string enclosed in quotes
+//     this.div_.style.visibility = 'visible';
+//   }
+// }; 
 
-HBuildingOverlay.prototype.toggle = function() {
-  if(this.div_){
-    if(this.div_.style.visibility === 'hidden'){
-      this.show();
-    } else {
-      this.hide();
-    }
-  }
-};
+// HBuildingOverlay.prototype.toggle = function() {
+//   if(this.div_){
+//     if(this.div_.style.visibility === 'hidden'){
+//       this.show();
+//     } else {
+//       this.hide();
+//     }
+//   }
+// };
 
-// we want to detach the map from the DOM via toggleDOM
-// it will still be visible if we wish to attach it later
-HBuildingOverlay.prototype.toggleDOM = function() {
-  if (this.getMap()){
-    // note: setMap(null) calls OverlayView.onRemove()
-    this.setMap(null);
-  } else {
-    this.setMap(this.map_);
-  }
-};
+// // we want to detach the map from the DOM via toggleDOM
+// // it will still be visible if we wish to attach it later
+// HBuildingOverlay.prototype.toggleDOM = function() {
+//   if (this.getMap()){
+//     // note: setMap(null) calls OverlayView.onRemove()
+//     this.setMap(null);
+//   } else {
+//     this.setMap(this.map_);
+//   }
+// };
 
 // new function to handle the start button
 
