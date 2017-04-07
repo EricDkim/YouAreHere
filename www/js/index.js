@@ -258,7 +258,7 @@ var cordovaExample = {
   // Initializes Google Maps with the given properties
   initializeMap: function() {
 
-        var buildingLatLng = $("#select-building").val();
+        var buildingLatLng = $("#selectBuilding").val();
 
         if (buildingLatLng === "A") {
           // var mapProp = {
@@ -381,13 +381,7 @@ var cordovaExample = {
       strokeColor: '#00A5F6',
       strokeWeight: 1
     };
-    // var mapProp = {
-    //   center: new google.maps.LatLng(65.060848804763, 25.4410770535469),
-    //   zoom: 15,
-    //   mapTypeId: google.maps.MapTypeId.ROADMAP,
-    //   mapTypeControl: false,
-    //   streetViewControl: false
-    // };
+
     venuemap = new google.maps.Map(document.getElementById('googleMap'), mapProp);
     // added
     // venuemarker = new google.maps.Map(document.getElementById('markerTo'), markerProp);
@@ -528,81 +522,6 @@ var cordovaExample = {
   }
 };
 
-// constructor for hbuildingoverlay
-// might have to chage 'map' to 'mapProp'
-// function HBuildingOverlay(bounds, image, mapProp){
-
-//   //init all properties
-//   this.bounds_ = bounds;
-//   this.image_ = image;
-//   this.map_ = mapProp;
-
-//   //property to hold the image's div
-//   this.div_ = null;
-
-//   this.setMap(mapProp);
-
-// }
-
-
-//   this.div_ = div;
-
-//   var panes = this.getPanes();
-//   panes.overlayImage.appendChild(this.div_);
-// };
-// HBuildingOverlay.prototype.draw = function() {
-
-//   // use the SW and NW coordinates to peg the image into place 
-//   // to do this frist we need to get the projection from the overlay
-//   var overlayProjection = this.getProjection();
-
-//   // Retrieve the SW and NW coordinates in LatLng and convert them to pixel coord
-//   // this will be later used to resize the div
-//   var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
-//   var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
-
-
-
-// HBuildingOverlay.prototype.onRemove = function() {
-//   this.div_.parentNode.removeChild(this.div_);
-// }
-
-// HBuildingOverlay.prototype.hide = function() {
-//   if (this.div_){
-//     // the visibility property must be a string enclosed in quotes
-//     this.div_.style.visibility = 'hidden';
-//   }
-// };
-
-// HBuildingOverlay.prototype.show = function() {
-//   if (this.div_){
-//     // same as the hide function, the visiblity property must be a string enclosed in quotes
-//     this.div_.style.visibility = 'visible';
-//   }
-// }; 
-
-// HBuildingOverlay.prototype.toggle = function() {
-//   if(this.div_){
-//     if(this.div_.style.visibility === 'hidden'){
-//       this.show();
-//     } else {
-//       this.hide();
-//     }
-//   }
-// };
-
-// // we want to detach the map from the DOM via toggleDOM
-// // it will still be visible if we wish to attach it later
-// HBuildingOverlay.prototype.toggleDOM = function() {
-//   if (this.getMap()){
-//     // note: setMap(null) calls OverlayView.onRemove()
-//     this.setMap(null);
-//   } else {
-//     this.setMap(this.map_);
-//   }
-// };
-
-// new function to handle the start button
 
 
 

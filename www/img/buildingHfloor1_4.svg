@@ -1,110 +1,3 @@
-<!DOCTYPE html>
-
-<!--
-IndoorAtlas Cordova Plugin Examples
-https://github.com/IndoorAtlas/cordova-plugin
-https://github.com/IndoorAtlas/sdk-cordova-examples
--->
-
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-<html>
-<head>
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-
-  <!--Reference and link to jquery libary-->
-  <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
-  
-  <!--Reference and link to jquery libary located in the lib folder-->
-  <link rel="stylesheet" href="lib/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-  <script src="lib/jquery-2.1.4/jquery-2.1.4.min.js"></script>
-  <script src="lib/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <script type="text/javascript">
-     var GOOGLE_API_KEY = 'AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA';
-
-  </script>
-
-  <!-- added -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzXNyHtYRnUl8l_ZyIWJ_NsTf-AYwBhBA"></script>
-  
-  <!-- API Keys for the app -->
-  <script type="text/javascript" src="js/APIKeys.js"></script>
-    
-  <title>YouAreHere</title>
-</head>
-
-<body>
-
-
-  <div data-role="page" id="pageone" data-theme="b" style="text-transform: none">
-    <div data-role="header">
-      <h1>You Are Here</h1>
-    </div><!-- end of p1 header -->
-    <div data-role="main" class="ui-content">
-      <div align="center">
-        <div class="ui-field-contain" id="BuildingSelector">
-          <label for="select-building">Building</label>
-          <!-- <select name="selectBuilding" id="selectBuilding" data-native-menu="false" onchange="showBuilding(); show()"> -->
-          <select name="selectBuilding" id="selectBuilding" data-native-menu="false">
-            <option value="">Select a Building</option>
-            <option value="A">Building A</option>
-            <option value="B">Building B</option>
-            <option value="C">Building C</option>
-            <option value="H">Building H</option>
-          </select>
-        </div><!-- end of building selector -->
-
-        <div class="ui-field-contain" id="FloorSelector">
-          <label for="select-floor">Floor</label>
-          <!-- <select name="selectfloor" id="selectfloor" data-native-menu="false" onchange="showFloor(); show()"> -->
-          <select name="selectfloor" id="selectfloor" data-native-menu="false">
-            <option value="">Select a Floor</option>
-            <option name="ground" value="G">Ground</option>
-            <option name="floor 1" value="1">Floor 1</option>
-            <option name="floor 2" value="2">Floor 2</option>
-            <option name="floor 3" value="3">Floor 3</option>
-          </select>
-        </div><!-- end of floor selector -->
-          
-        <div class="ui-field-conatin" id="RoomSelector">
-            <label for="search-room">Enter Room Number</label>
-            <input type="number" name="searchroom" id="searchroom" value=" " pattern="[0-9]{4}"/>
-        </div> <!-- End of room number input -->
-          
-        <div data-role="controlgroup" data-type="vertical">
-          <div><a href="#pagetwo" data-role="button" id="letsgo">Go to page two</a></div>
-        </div><!-- end of control group -->
-      </div><!-- end of align center -->
-    </div><!-- end of main for page one  -->
-  </div><!-- end of page one -->
-
-  <!-- overflow in style disables scroll in page two -->
-  <div data-role="page" id="pagetwo" data-theme="b" style="overflow-y: hidden; text-transform: none">
-  <div id="centered" style="display: block">
-  <!-- <div id="floating-panel"> -->
-<section id="hBuildingFloor1" style="display: none">
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
@@ -117,8 +10,8 @@ under the License.
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="445"
-   height="330"
+   width="1150"
+   height="1000"
    viewBox="0 0 1150 1000"
    id="svg33945"
    version="1.1"
@@ -8294,7 +8187,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
              inkscape:connector-curvature="0"
              class="cls-9"
              d="m 12.764413,264.32314 5.9e-5,-0.29597 -1.992608,5e-5 -5.9e-5,0.29596 -0.606106,-9e-5 -6e-6,3.80055 3.213536,7e-5 -3e-6,-3.80053 z"
-             id="1209" />
+             id="path13308" />
           <path
              style="fill:none;stroke:#ffffff;stroke-width:0.09482356;stroke-miterlimit:10"
              inkscape:connector-curvature="0"
@@ -8307,7 +8200,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
              inkscape:connector-curvature="0"
              class="cls-9"
              d="m 16.726342,264.31296 -0.03121,-0.31437 -2.717557,-7e-5 -8.9e-5,0.30008 -0.80594,1.9e-4 1.6e-5,3.00823 0.91733,-6.6e-4 6.3e-5,0.55916 0.311259,-5.3e-4 -0.01518,0.28424 3.010259,-5e-5 -1.6e-5,-3.85163 z"
-             id="1210" />
+             id="path13312" />
           <path
              sodipodi:nodetypes="ccccccccccccc"
              style="fill:none;stroke:#ffffff;stroke-width:0.09620038;stroke-miterlimit:10"
@@ -8338,7 +8231,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
              inkscape:connector-curvature="0"
              class="cls-9"
              d="m 17.363558,263.01799 -2.515916,-4e-5 -7.8e-5,-0.34807 -0.870836,8e-5 8e-6,-3.64488 3.386754,7e-5 z"
-             id="1212" />
+             id="path13322" />
           <path
              style="fill:none;stroke:#ffffff;stroke-width:0.11370599;stroke-miterlimit:10"
              inkscape:connector-curvature="0"
@@ -8749,7 +8642,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
              inkscape:connector-curvature="0"
              class="cls-11"
              d="m 21.96198,271.1501 3.863469,0.0139 6e-6,3.01816 -3.892929,7e-5 z"
-             id="1107" />
+             id="path13458" />
           <path
              style="fill:#00704a;stroke:#ffffff;stroke-width:0.09231752;stroke-miterlimit:10"
              inkscape:connector-curvature="0"
@@ -8857,7 +8750,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
              inkscape:connector-curvature="0"
              class="cls-9"
              d="m 10.279434,279.29705 -5.2e-5,0.29485 -2.8031901,0 -4e-7,-4.19184 3.4417075,-7e-5 5e-6,3.89698 z"
-             id="1132" />
+             id="path13494" />
           <path
              style="fill:none;stroke:#ffffff;stroke-width:0.09936132;stroke-miterlimit:10"
              inkscape:connector-curvature="0"
@@ -11746,123 +11639,3 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
     </g>
   </g>
 </svg>
-
-</section>
-
-
-  <!-- </div> --> <!-- end of floating-panel div -->
-  </div> <!-- end of centered div -->
-  <div id="googleMap" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
-  <div id="buildingMap">
-    <!-- <div id="markerTo" style="opacity: 0.7;"></div> -->
-    <div id="map"></div>
-  </div>
-
-    <div data-role="header" id="header">
-      <h1>Page Two of You Are Here</h1>
-      <div id="actions">
-        <button id="setPositionButton">Set/Start Position</button>
-        <!-- <button id="startPositioningButton">Start</button> -->
-        <button id="stopPositioningButton">Stop</button>
-        <!-- <input type="button" value="Toggle visibility" onclick="overlay.toggle();"></input> -->
-        <!-- <input type="button" value="Toggle DOM attachment" onclick="overlay.toggleDOM();"></input> -->
-        <button id="findRoomButton" onclick="findRoom()">Locate Room</button>
-      </div>
-      <div><a href="#pageone">Go back to page one</a></div>
-    </div><!-- end of page two header -->
-    <div data-role="main" class="ui-content">
-        <!-- Google Maps Javascript API, Api key is set in www/js/APIKeys.js -->
-        <script src='https://maps.googleapis.com/maps/api/js?key=' id='googleMapsKey'></script>
-        <script>
-        var googleMapsKey = document.getElementById('googleMapsKey');
-        googleMapsKey.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY;
-        </script>
-
-        <!-- <div id="map-canvas"></div> -->
-
-        <!-- Script to set up the API Keys for function calls -->
-        <script>
-        var setPositionButton = document.getElementById('setPositionButton');
-        var startPositioningButton = document.getElementById('startPositioningButton');
-        var stopPositioningButton = document.getElementById('stopPositioningButton');
-
-        var hBuildingFloor1 = document.getElementById('hBuildingFloor1');
-
-        stopPositioningButton.disabled = true;
-        stopPositioningButton.style.background = '#D3D3D3';
-        setPositionButton.onclick = function() {
-          cordovaExample.setPosition({regionId: IA_FLOORPLAN_ID});
-          cordovaExample.startPositioning();
-          stopPositioningButton.disabled = false;
-          setPositionButton.disabled = true;
-
-          if(hBuildingFloor1.style.display != 'none'){
-            alert("SVG is Visible");
-          } else {
-            hBuildingFloor1.style.display = 'block';
-          }
-
-        };
-        // startPositioningButton.onclick = function() {
-        //   startPositioningButton.disabled = true;
-        //   startPositioningButton.style.background = '#D3D3D3';
-        //   setPositionButton.disabled = true;
-        //   setPositionButton.style.background = '#D3D3D3';
-        //   stopPositioningButton.disabled = false;
-        //   stopPositioningButton.style.background = '#00A5F6';
-        //   cordovaExample.startPositioning();
-        // };
-        stopPositioningButton.onclick = function() {
-          setPositionButton.disabled = false;
-          // startPositioningButton.disabled = false;
-          // startPositioningButton.style.background = '#00A5F6';
-          setPositionButton.disabled = false;
-          setPositionButton.style.background = '#00A5F6';
-          stopPositioningButton.disabled = true;
-          stopPositioningButton.style.background = '#D3D3D3';
-          cordovaExample.stopPositioning();
-        };
-
-
-        findRoom = function(){
-          // assign room value from input to var
-          var searchRoom = document.getElementById('searchroom').value;
-
-          var room = document.getElementById(searchRoom);
-
-          if (room != null){
-            room.style.fill = "#fffccc";
-          } else {
-            alert("Room input is null")
-          }
-
-        }
-
-
-
-
-        </script>
-
-    </div><!-- end of main for page two -->
-  </div><!-- end of page two -->
-
-<!--   <div id="watchlog" class="demowatch"><div class="centerText">-</div></div>
-  <div class="app">
-    <div id="deviceready" class="blink">
-      <p class="event listening">Connecting to Device</p>
-      <p class="event received">Device is Ready</p>
-    </div>
-  </div> -->
-
-  <!-- This class helps to rotate the overlay for Google Maps -->
-  <script type="text/javascript" src="js/ClassForMapOverlay.js"></script>
-
-  <!-- Functionality of the app -->
-
-  <script type="text/javascript" src="js/index.js"></script>
-  <!-- <script type="text/javascript" src="js/div.js"></script> -->
-
-  <script type="text/javascript" src="cordova.js"></script>
-
-</body>
-</html>
