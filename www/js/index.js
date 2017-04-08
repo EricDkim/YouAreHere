@@ -160,7 +160,7 @@ var cordovaExample = {
         // do not add an alert here. 
       }
       else {
-        alert('good mark');
+        // alert('good mark');
         // this is the default location where the marker will be placed if the service cannot
         // pick up the users location.
         this.marker = new google.maps.Marker({
@@ -176,7 +176,9 @@ var cordovaExample = {
       // disabled moving of screen while marker moves
       // venuemap.panTo(center);
     }
-    catch(error) {alert(error)};
+    catch(error) {
+      // alert(error)
+    };
   },
 
   // Sets position of the location
@@ -199,13 +201,13 @@ var cordovaExample = {
         };
         var fail = function(error){
           SpinnerPlugin.activityStop();
-          alert(error.message);
+          // alert(error.message);
 
         };
         IndoorAtlas.setPosition(win, fail, options);
       }
       catch(error){
-        alert(error);
+        // alert(error);
       }
     } else {
       alert("Floorplan ID is not set");
@@ -397,13 +399,13 @@ var cordovaExample = {
         // alert("set overlay worked Win condition 2"); //added
         SpinnerPlugin.activityStop();
           var block = document.getElementById('centered');
-          var hbuildingfloor1div = document.getElementById('hBuildingFloor1');
-          if (hbuildingfloor1div.style.display === 'none'){
-            hbuildingfloor1div.style.display = 'block';
-            block.style.display = 'block';
+          // var hbuildingfloor1div = document.getElementById('hBuildingFloor1');
+          if (block.style.display === "none"){
+
+            block.style.display = "block";
           } else {
-            hbuildingfloor1div.style.display = 'none';
-            block.style.display = 'none';
+            // hbuildingfloor1div.style.display = "none";
+            block.style.display = "none";
           }
         // Set position and map overlay
         cordovaExample.setMapOverlay(floorplan);
@@ -412,7 +414,7 @@ var cordovaExample = {
       var fail = function(error) {
         // alert("setoverlay failed 3"); //added
         SpinnerPlugin.activityStop();
-        alert(error.message);
+        // alert(error.message);
       };
 
 
@@ -420,7 +422,7 @@ var cordovaExample = {
       IndoorAtlas.fetchFloorPlanWithId(position.regionId, win, fail);
     }
     catch(error) {
-      alert(error);
+      // alert(error);
     }
   },
 
@@ -480,12 +482,12 @@ var cordovaExample = {
       SpinnerPlugin.activityStop();
       //added
       var block = document.getElementById('centered');
-          var hbuildingfloor1div = document.getElementById('hBuildingFloor1');
-          if (hbuildingfloor1div.style.display === 'none'){
-            hbuildingfloor1div.style.display = 'block';
+          // var hbuildingfloor1div = document.getElementById('hBuildingFloor1');
+          if (block.style.display === 'none'){
+            // hbuildingfloor1div.÷style.display = 'block';
             block.style.display = 'block';
           } else {
-            hbuildingfloor1div.style.display = 'none';
+            // hbuildingfloor1div.style.display = 'none';
             block.style.display = 'none';
           }
       cordovaExample.setMapOverlay(floorplan);
@@ -493,7 +495,7 @@ var cordovaExample = {
     };
     var fail = function(error) {
       SpinnerPlugin.activityStop();
-      alert(error.message);
+      // alert(error.message);
     };
 
     // Gets the floorplan with the given region ID (floorplan ID) and then continues as specified earlier

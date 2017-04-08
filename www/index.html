@@ -102,9 +102,9 @@ under the License.
 
   <!-- overflow in style disables scroll in page two -->
   <div data-role="page" id="pagetwo" data-theme="b" style="overflow-y: hidden; text-transform: none">
-  <div id="centered" style="display: block">
+<div id="centered">
   <!-- <div id="floating-panel"> -->
-<section id="hBuildingFloor1" style="display: none">
+<section id="hBuildingFloor1">
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
@@ -11761,21 +11761,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
     <div data-role="header" id="header">
       <h1>Page Two of You Are Here</h1>
       <div id="actions">
-        <button id="setPositionButton">Set/Start Position</button>
-        <!-- <button id="startPositioningButton">Start</button> -->
-        <button id="stopPositioningButton">Stop</button>
+        <button id="setPositionButton">Set Position</button>
+        <button id="startPositioningButton">Start Navigation</button>
+        <button id="stopPositioningButton">Stop Navigation</button>
         <!-- <input type="button" value="Toggle visibility" onclick="overlay.toggle();"></input> -->
         <!-- <input type="button" value="Toggle DOM attachment" onclick="overlay.toggleDOM();"></input> -->
         <button id="findRoomButton" onclick="findRoom()">Locate Room</button>
       </div>
-      <div><a href="#pageone">Go back to page one</a></div>
+      <!-- <div><a href="#pageone">Go back to page one</a></div> -->
     </div><!-- end of page two header -->
     <div data-role="main" class="ui-content">
         <!-- Google Maps Javascript API, Api key is set in www/js/APIKeys.js -->
         <script src='https://maps.googleapis.com/maps/api/js?key=' id='googleMapsKey'></script>
         <script>
-        var googleMapsKey = document.getElementById('googleMapsKey');
-        googleMapsKey.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY;
+            var googleMapsKey = document.getElementById('googleMapsKey');
+            googleMapsKey.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY;
         </script>
 
         <!-- <div id="map-canvas"></div> -->
@@ -11795,28 +11795,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAtfj/eh4Vb/BDmzUAAAAASUVORK5CYII=
           cordovaExample.startPositioning();
           stopPositioningButton.disabled = false;
           setPositionButton.disabled = true;
-
-          if(hBuildingFloor1.style.display != 'none'){
-            alert("SVG is Visible");
-          } else {
-            hBuildingFloor1.style.display = 'block';
-          }
-
+          setPositionButton.style.background = '#D3D3D3';
+          startPositioningButton.style.background = '#D3D3D3';
         };
-        // startPositioningButton.onclick = function() {
-        //   startPositioningButton.disabled = true;
-        //   startPositioningButton.style.background = '#D3D3D3';
-        //   setPositionButton.disabled = true;
-        //   setPositionButton.style.background = '#D3D3D3';
-        //   stopPositioningButton.disabled = false;
-        //   stopPositioningButton.style.background = '#00A5F6';
-        //   cordovaExample.startPositioning();
-        // };
+        startPositioningButton.onclick = function() {
+          startPositioningButton.disabled = true;
+          startPositioningButton.style.background = '#D3D3D3';
+          setPositionButton.disabled = true;
+          setPositionButton.style.background = '#D3D3D3';
+          stopPositioningButton.disabled = false;
+          stopPositioningButton.style.background = '#00A5F6';
+          cordovaExample.setPosition({regionId: IA_FLOORPLAN_ID});
+          cordovaExample.startPositioning();
+        };
         stopPositioningButton.onclick = function() {
-          setPositionButton.disabled = false;
           // startPositioningButton.disabled = false;
           // startPositioningButton.style.background = '#00A5F6';
           setPositionButton.disabled = false;
+          startPositioningButton.disabled = false;
           setPositionButton.style.background = '#00A5F6';
           stopPositioningButton.disabled = true;
           stopPositioningButton.style.background = '#D3D3D3';
