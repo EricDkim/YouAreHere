@@ -1,2 +1,4 @@
-.DS_Store
-platforms/
+#OS Junk Files
+*.DS_Store
+#Platform files
+platforms/*
