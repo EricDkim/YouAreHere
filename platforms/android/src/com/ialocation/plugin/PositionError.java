@@ -30,8 +30,8 @@ public class PositionError {
     public static JSONObject getErrorObject(int errorCode, String message){
         try{
             JSONObject errorObject = new JSONObject();
-            errorObject.put("code",errorCode);
-            errorObject.put("message",message);
+            // errorObject.put("code",errorCode);
+            // errorObject.put("message",message);
             return errorObject;
         }
         catch(Exception ex){
@@ -71,7 +71,7 @@ public class PositionError {
                     break;
                 case FLOOR_PLAN_UNAVAILABLE:
                     errorObject.put("code",errorCode);
-                    errorObject.put("message","Floor plan unavailable");
+                    // errorObject.put("message","Floor plan unavailable");
                     break;
                 case FLOOR_PLAN_UNDEFINED:
                     errorObject.put("code",errorCode);

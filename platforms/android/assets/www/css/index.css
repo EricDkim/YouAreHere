@@ -113,3 +113,56 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+/*
+ to edit the styles on the map, edit in index.js
+*/
+#map {
+        height: 100%;
+        
+      }
+#googleMap {
+    position: relative;
+    z-index: 5;
+    -webkit-transform: rotate(33deg);
+    /* original */
+    /*-webkit-transform: rotate(32deg);*/
+}
+#img {
+    -webkit-transform: rotate(50deg);
+}
+.img {
+    -webkit-transform: rotate(50deg);
+}
+.gm-style-cc { display:none; }
+#header{
+    z-index: 9;
+    position: relative;
+}
+#buildingMap {
+    position: relative;
+    z-index: 4;
+    -webkit-transform: rotate(50deg);
+}
+#centered {
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -106px;
+    margin-left: -212px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

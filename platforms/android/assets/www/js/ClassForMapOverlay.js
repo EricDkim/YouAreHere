@@ -1,6 +1,6 @@
 /*
  * IndoorAtlas Cordova Plugin Examples
- * https://github.com/IndoorAtlas/cordova-plugin
+ * https://github.com/IndoorAtlas/ds-plugin
  * https://github.com/IndoorAtlas/sdk-cordova-examples
  */
 
