@@ -1,4 +1,5 @@
 #OS Junk Files
 *.DS_Store
+www/.DS_Store
 #Platform files
 platforms/*
