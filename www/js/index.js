@@ -56,21 +56,17 @@ var app = {
 
 app.initialize();
 
-  // var building_selection = $("#selectBuilding").val();
-  // var floor_selection = $("#selectfloor").val();
 $("#selectBuilding").change(function() {
-      var building_selection = $("#selectBuilding").val();
-  var floor_selection = $("#selectfloor").val();
+    var building_selection = $("#selectBuilding").val();
+    var floor_selection = $("#selectfloor").val();
     if (building_selection === "A") {
         IA_FLOORPLAN_ID = 'c49491e5-6c4b-43a4-9c83-e4853435a95b';
         $("#selectfloor").val("G").trigger("change");
         $("#selectfloor").selectmenu("disable", true);
-    } else if (building_selection === "H"){
-        alert("H building selected");
+    } else if (building_selection === "H") {
         $("#selectfloor").selectmenu("enable", true);
         IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9';
     } else {
-        alert(building_selection + floor_selection);
         $("#selectfloor").selectmenu("enable", true);
     }
 });
@@ -124,9 +120,10 @@ var cordovaExample = {
   },
 
   setPosition: function(options) {
-    var building_selection = $("#selectBuilding").val();
-    if (IA_FLOORPLAN_ID != "") {
-      alert("Setting up navigation for: " + building_selection);
+    
+      var building_selection = $("#selectBuilding").val();
+    
+      if (IA_FLOORPLAN_ID != "") {
 
       try {
         SpinnerPlugin.activityStart('Setting location');
