@@ -90,30 +90,43 @@ app.initialize();
     "Building A" is selected in the building selector. If "Building A" is 
     not selected then the floor selector will be enabled. The floor plan ID is also set based on what building is selected.
 */
-$("#select-building").change(function() {
+
+$(document).on('pageshow', '#pageone', function() {
+  $('#FloorSelector').hide();
+  $('#RoomSelector').hide();
+});
+
+$("#selectBuilding").change(function() {
   
     // Create variable to grab current selection value
-    var building_selection = $("#select-building").val();
+    var building_selection = $("#selectBuilding").val();
+    var floor_selection = $("#selectfloor").val();
     
     if (building_selection === "A") {
-
+        $('#FloorSelector').show();
         // floorplan id for A
         IA_FLOORPLAN_ID = 'c49491e5-6c4b-43a4-9c83-e4853435a95b';
-        // alert("You selected building A!");
-        $("#select-floor").val("G").trigger("change");
-        $("#select-floor").selectmenu("disable", true);
+        alert("You selected building A!");
+        $("#selectfloor").val("G").trigger("change");
+        $("#selectfloor").selectmenu("disable", true);
        //$("select-floor").selectmenu("refresh", true);
+       if (floor_selection === ""){
+          $('#RoomSelector').show();
+        }
     
     } else if (building_selection === "H"){
-        
-        // alert("You selected building H!");
-        $("#select-floor").selectmenu("enable", true);
+        $('#FloorSelector').show();
+        alert("You selected building H!");
+        $("#selectfloor").selectmenu("enable", true);
         // floorplan id for H
         IA_FLOORPLAN_ID = '7de47cbe-c232-4875-b3d7-324b1ba15ed9';
+        if (floor_selection === ""){
+          $('#RoomSelector').show();
+        }
        
     } else {
         
-        $("#select-floor").selectmenu("enable", true);
+        $("#selectfloor").selectmenu("enable", true);
     }
 });
 
