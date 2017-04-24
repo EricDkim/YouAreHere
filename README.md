@@ -24,11 +24,15 @@
 	- To access the IndoorAtlas account, please contact Eric at dkim3@ggc.edu for the account information.
 
 ### How to develop
-	- If you want to change the scripts, work under ../www/js/. If you wish to work and edit the HTML, work under ../www/html/. 
-	- When adding new buildigns and floor plan (SVG) please create new html files, since each building/floor plan will require the svg to be embeded within the HTML.
+	- If you want to change the scripts, work under ../www/js/. If you wish to work and edit
+	 the HTML, work under ../www/html/. 
+	- When adding new buildigns and floor plan (SVG) please create new html files, since each 
+	building/floor plan will require the svg to be embeded within the HTML.
 	- Follow the jQuery mobile framework to make the application astehtically pleasing.
-	- Plugins contain the cordova plugins, such as the spinner and the essential IndoorAtlas plugin. 
-	- Essentaily, you as the developer should not be touching the platforms unless you are proficent at eding a previously built andoird application. 
+	- Plugins contain the cordova plugins, such as the spinner and the essential IndoorAtlas
+	 plugin. 
+	- Essentaily, you as the developer should not be touching the platforms unless you are 
+	proficent at eding a previously built andoird application. 
 
 ## License
 	- Creative Commons Attribution-NonCommerical 4.0 International ( CC-BY-NC 4.0 )
