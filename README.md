@@ -11,11 +11,11 @@
 	Georgia Gwinnett College, if you have gotten lost trying to find a room, then this 
 	application is for you. Input the building, floor and the room number and you are on your 
 	way to find your destination fairly quickly.
-	
+
 
 ## Requirements
 	- You will need to have the following to be able to develop this application
-		- [https://app.indooratlas.com/login IndoorAtlas API]
+		- [https://app.indooratlas.com/login](IndoorAtlas API)
 		- Google Maps API
 		- Cordova
 	- You can find the IndoorAtlas API when you log in to the 
