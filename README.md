@@ -33,9 +33,11 @@
 	 plugin. 
 	- Essentaily, you as the developer should not be touching the platforms unless you are 
 	proficent at eding a previously built andoird application.
-	- SVG image was borrowed from
+
 ### SVG Image 
+#### SVG image was borrowed from this repository
  [ggcmaps](https://github.com/soft-eng-practicum/ggcmaps/)
+
 ## License
 	- Creative Commons Attribution-NonCommerical 4.0 International ( CC-BY-NC 4.0 )
 
