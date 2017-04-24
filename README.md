@@ -15,8 +15,7 @@
 
 ### Requirements API and Frameworks
 1. Google Maps
-2. Cordova
-	Android Build 5.0
+2. Cordova Android Build 5.0
 3. JQuery Mobile 1.4.5
 4. JQuery 2.1.4
 5. Indoor Atlas Version 1.0
@@ -29,11 +28,12 @@
 	 the HTML, work under ../www/html/. 
 	- When adding new buildigns and floor plan (SVG) please create new html files, since each 
 	building/floor plan will require the svg to be embeded within the HTML.
-	- Follow the jQuery mobile framework to make the application astehtically pleasing.
+	- Follow the JQuery mobile framework to make the application astehtically pleasing.
 	- Plugins contain the cordova plugins, such as the spinner and the essential IndoorAtlas
 	 plugin. 
 	- Essentaily, you as the developer should not be touching the platforms unless you are 
-	proficent at eding a previously built andoird application. 
+	proficent at eding a previously built andoird application.
+	- SVG image was borrowed from 
 
 ## License
 	- Creative Commons Attribution-NonCommerical 4.0 International ( CC-BY-NC 4.0 )
