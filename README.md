@@ -15,7 +15,7 @@
 
 ## Requirements
 	- You will need to have the following to be able to develop this application
-		- [IndoorAtlas API]<https://app.indooratlas.com/login>
+		- this is a link [IndoorAtlas API](https://app.indooratlas.com/login).
 		- Google Maps API
 		- Cordova
 	- You can find the IndoorAtlas API when you log in to the 
