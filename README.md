@@ -6,23 +6,29 @@
 - **Professor** Cengiz Gunay (Advisor)
 
 ## About
-	-Needs to be added
+	- You Are Here is a Indoor GPS navigation app constructed by using the IndoorAtlas API, 
+	Google Maps API and the Cordova Platform. For students and faculty who have attended 
+	Georgia Gwinnett College, if you have gotten lost trying to find a room, then this 
+	application is for you. Input the building, floor and the room number and you are on your 
+	way to find your destination fairly quickly. Since we are using Cordova, we can push the application quickly to an Android or iOS build without changing any code. 
 
-### Errors | Feb 17:
-	- Why we couldn't get our JS to work was because there was something wrong with the META tags in index.html. 
-	- By commenting them out or removing them I was able to get the scripts to work.
+### Requirements API and Frameworks
+1. Google Maps
+2. Cordova
+	Android Build 5.0
+3. JQuery Mobile 1.4.5
+4. JQuery 2.1.4
+5. Indoor Atlas Version 1.0
 
-### Errors | commit: 82c13317b0042feb2b31801870f052c6db7f4509
-	- first page works as it should, no errors can be found
-	- once directed to page two, set position and start position gives and error of "Floor Plan Unavailable" but the app works.???
+### IndoorAtlas Account Access
+	- To access the IndoorAtlas account, please contact Eric at dkim3@ggc.edu for the account information.
 
-### Errors & TODO | March 19:
-	- Added a lot of DEBUG alerts within the index.js files to better understand the cause of the errors.
-	- The overlay opacity of the second map image is somewhat working, things to fix: correctly placing the image on top of the building and then creating waypoint or markers for each room.
-	- Need to rotate the map canvas correctly so that it fits the screen in the best way possible (optimze space).
-	- First page selection screen should have its floor selector be disabled when initially selecting a building. When the user first opens the app, the floor selector should be disabled until a building is selected. 
-	- The back button needs to refresh the whole second page. As of now, the back button does not erase/cance/refresh when a new building is selected. 
-### Errors | March 21:
-	- on index.js line 227 where it says 'if (this.watchId != null) {', this is where the error
-		"IndoorAtlas Is Not Iniitialized" is coming from. However, after doing Set and Start position
-		once, the watchId will be not null the second time around which fixes this error. 
+### How to develop
+	- If you want to change the scripts, work under ../www/js/. If you wish to work and edit the HTML, work under ../www/html/. 
+	- When adding new buildigns and floor plan (SVG) please create new html files, since each building/floor plan will require the svg to be embeded within the HTML.
+	- Follow the jQuery mobile framework to make the application astehtically pleasing.
+	- Plugins contain the cordova plugins, such as the spinner and the essential IndoorAtlas plugin. 
+	- Essentaily, you as the developer should not be touching the platforms unless you are proficent at eding a previously built andoird application. 
+
+## License
+	- Creative Commons Attribution-NonCommerical 4.0 International ( CC-BY-NC 4.0 )
