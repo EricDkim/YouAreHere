@@ -13,12 +13,13 @@
 	way to find your destination fairly quickly.
 
 
-## Requirements
-	- You will need to have the following to be able to develop this application
-		- this is a link [IndoorAtlas API](https://app.indooratlas.com/login).
-		- Google Maps API (https://www.googl.com)
-		- Cordova
-	- You can find the IndoorAtlas API when you log in to the 
+### Requirements API and Frameworks
+1. Google Maps
+2. Cordova
+	Android Build 5.0
+3. JQuery Mobile 1.4.5
+4. JQuery 2.1.4
+5. Indoor Atlas Version 1.0
 
 ## License
-	- ENTER LICENSE
+	- Creative Commons Attribution-NonCommerical 4.0 International ( CC-BY-NC 4.0 )
