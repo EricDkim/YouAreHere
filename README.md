@@ -8,17 +8,12 @@
 ## About
 	-Needs to be added
 
-### API and Frameworks
+### Requirements API and Frameworks
 1. Google Maps
 2. Cordova
-3. JQuery Mobile
-4. JQuery
-5. Indoor Atlas
-
-### 
-	
-
-### 
+	Android Build 5.0
+3. JQuery Mobile 1.4.5
+4. JQuery 2.1.4
+5. Indoor Atlas Version 1.0
  
-### 
 	
