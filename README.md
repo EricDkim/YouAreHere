@@ -10,7 +10,8 @@
 	Google Maps API and the Cordova Platform. For students and faculty who have attended 
 	Georgia Gwinnett College, if you have gotten lost trying to find a room, then this 
 	application is for you. Input the building, floor and the room number and you are on your 
-	way to find your destination fairly quickly. Since we are using Cordova, we can push the application quickly to an Android or iOS build without changing any code. 
+	way to find your destination fairly quickly. Since we are using Cordova, we can push the 
+	application quickly to an Android or iOS build without changing any code. 
 
 ### Requirements API and Frameworks
 1. Google Maps
